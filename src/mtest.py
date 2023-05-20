@@ -1,7 +1,10 @@
 from pprint import pprint 
-from config_manager import ConfigManager
+from config import ConfigManager
+from global_config import GlobalConfig
 
-cmgr = ConfigManager()
+cfg = GlobalConfig()
+
+cmgr = ConfigManager(cfg.rootConfigPath)
 print(type(cmgr.root.root))
 pprint(cmgr.root.root)
 

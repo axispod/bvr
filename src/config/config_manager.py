@@ -1,16 +1,15 @@
 import os
 
-from config import Config
-from global_config import GlobalConfig
+from .config import Config
 
 class ConfigManager():
-    def __init__(self) -> None:
+    def __init__(self, root_path) -> None:
         self.__cache = {}
-        self.__globalConfig = GlobalConfig()
+        self.__root_path = root_path
 
     @property
     def root(self):
-        return self.getConfig('__root', self.__globalConfig.rootConfigPath)
+        return self.getConfig('__root', self.__root_path)
 
     def getFirstExistedFile(self, pathList):
         for path in pathList: 
@@ -18,7 +17,7 @@ class ConfigManager():
             if os.path.isfile(p):
                 return p
 
-        raise Exception(f"Config file not found\nMake one of: {', '.join(self.__globalConfig.rootConfigPath)}")
+        raise Exception(f"Config file not found\nMake one of: {', '.join(self.__root_path)}")
 
     def getConfig(self, path, files = None):
         if path not in self.__cache:
