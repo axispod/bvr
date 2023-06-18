@@ -2,7 +2,7 @@
 import argparse
 
 parser = argparse.ArgumentParser(
-    prog="Banch Video Recode", description="Automatic video recoding."
+    prog="Bunch Video Recode", description="Automatic video recoding."
 )
 
 parser.add_argument("-i", "--init", action="store_true", help="Init the application")

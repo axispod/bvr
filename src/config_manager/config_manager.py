@@ -10,14 +10,25 @@ class ConfigManager:
         # self.__cache = {}
         self.__root_path = os.path.expanduser(root_path)
 
-    def make_default(self) -> str:
+    @property
+    def root_path(self):
+        return self.__root_path
+
+    def make_default(self):
         """Make deafult config"""
-        serialized = json.dumps(default_config)
+        serialized = json.dumps(default_config, indent=4)
+
+        if os.path.isfile(self.__root_path):
+            answer = input(
+                "Config file already exists, do you want to override it [y/N]?"
+            )
+            if answer != "y" and answer != "Y":
+                return
 
         with open(self.__root_path, mode="w", encoding="utf-8") as file:
             file.write(serialized)
 
-        return self.__root_path
+        print("The default config is written to: " + self.__root_path)
 
     # @property
     # def root(self):
