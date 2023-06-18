@@ -1,7 +1,3 @@
 class GlobalConfig:
     def __init__(self) -> None:
-        self.rootConfigPath = [
-            '~/.bvr.json',
-            '~/.config/bvr/init.json'
-        ]
-
+        self.rootConfigPath = "~/.config/bvr/init.json"
